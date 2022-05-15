@@ -329,9 +329,9 @@ public class sample_project implements TalendJob {
 		final static byte[] commonByteArrayLock_TALEND_CLOUD_sample_project = new byte[0];
 		static byte[] commonByteArray_TALEND_CLOUD_sample_project = new byte[0];
 
-		public String id;
+		public Integer id;
 
-		public String getId() {
+		public Integer getId() {
 			return this.id;
 		}
 
@@ -375,63 +375,45 @@ public class sample_project implements TalendJob {
 
 		}
 
-		private String readString(ObjectInputStream dis) throws IOException {
-			String strReturn = null;
+		private Integer readInteger(ObjectInputStream dis) throws IOException {
+			Integer intReturn;
 			int length = 0;
-			length = dis.readInt();
+			length = dis.readByte();
 			if (length == -1) {
-				strReturn = null;
+				intReturn = null;
 			} else {
-				if (length > commonByteArray_TALEND_CLOUD_sample_project.length) {
-					if (length < 1024 && commonByteArray_TALEND_CLOUD_sample_project.length == 0) {
-						commonByteArray_TALEND_CLOUD_sample_project = new byte[1024];
-					} else {
-						commonByteArray_TALEND_CLOUD_sample_project = new byte[2 * length];
-					}
-				}
-				dis.readFully(commonByteArray_TALEND_CLOUD_sample_project, 0, length);
-				strReturn = new String(commonByteArray_TALEND_CLOUD_sample_project, 0, length, utf8Charset);
+				intReturn = dis.readInt();
 			}
-			return strReturn;
+			return intReturn;
 		}
 
-		private String readString(org.jboss.marshalling.Unmarshaller unmarshaller) throws IOException {
-			String strReturn = null;
+		private Integer readInteger(org.jboss.marshalling.Unmarshaller dis) throws IOException {
+			Integer intReturn;
 			int length = 0;
-			length = unmarshaller.readInt();
+			length = dis.readByte();
 			if (length == -1) {
-				strReturn = null;
+				intReturn = null;
 			} else {
-				if (length > commonByteArray_TALEND_CLOUD_sample_project.length) {
-					if (length < 1024 && commonByteArray_TALEND_CLOUD_sample_project.length == 0) {
-						commonByteArray_TALEND_CLOUD_sample_project = new byte[1024];
-					} else {
-						commonByteArray_TALEND_CLOUD_sample_project = new byte[2 * length];
-					}
-				}
-				unmarshaller.readFully(commonByteArray_TALEND_CLOUD_sample_project, 0, length);
-				strReturn = new String(commonByteArray_TALEND_CLOUD_sample_project, 0, length, utf8Charset);
+				intReturn = dis.readInt();
 			}
-			return strReturn;
+			return intReturn;
 		}
 
-		private void writeString(String str, ObjectOutputStream dos) throws IOException {
-			if (str == null) {
-				dos.writeInt(-1);
+		private void writeInteger(Integer intNum, ObjectOutputStream dos) throws IOException {
+			if (intNum == null) {
+				dos.writeByte(-1);
 			} else {
-				byte[] byteArray = str.getBytes(utf8Charset);
-				dos.writeInt(byteArray.length);
-				dos.write(byteArray);
+				dos.writeByte(0);
+				dos.writeInt(intNum);
 			}
 		}
 
-		private void writeString(String str, org.jboss.marshalling.Marshaller marshaller) throws IOException {
-			if (str == null) {
-				marshaller.writeInt(-1);
+		private void writeInteger(Integer intNum, org.jboss.marshalling.Marshaller marshaller) throws IOException {
+			if (intNum == null) {
+				marshaller.writeByte(-1);
 			} else {
-				byte[] byteArray = str.getBytes(utf8Charset);
-				marshaller.writeInt(byteArray.length);
-				marshaller.write(byteArray);
+				marshaller.writeByte(0);
+				marshaller.writeInt(intNum);
 			}
 		}
 
@@ -443,7 +425,7 @@ public class sample_project implements TalendJob {
 
 					int length = 0;
 
-					this.id = readString(dis);
+					this.id = readInteger(dis);
 
 				} catch (IOException e) {
 					throw new RuntimeException(e);
@@ -462,7 +444,7 @@ public class sample_project implements TalendJob {
 
 					int length = 0;
 
-					this.id = readString(dis);
+					this.id = readInteger(dis);
 
 				} catch (IOException e) {
 					throw new RuntimeException(e);
@@ -476,9 +458,9 @@ public class sample_project implements TalendJob {
 		public void writeData(ObjectOutputStream dos) {
 			try {
 
-				// String
+				// Integer
 
-				writeString(this.id, dos);
+				writeInteger(this.id, dos);
 
 			} catch (IOException e) {
 				throw new RuntimeException(e);
@@ -489,9 +471,9 @@ public class sample_project implements TalendJob {
 		public void writeData(org.jboss.marshalling.Marshaller dos) {
 			try {
 
-				// String
+				// Integer
 
-				writeString(this.id, dos);
+				writeInteger(this.id, dos);
 
 			} catch (IOException e) {
 				throw new RuntimeException(e);
@@ -504,7 +486,7 @@ public class sample_project implements TalendJob {
 			StringBuilder sb = new StringBuilder();
 			sb.append(super.toString());
 			sb.append("[");
-			sb.append("id=" + id);
+			sb.append("id=" + String.valueOf(id));
 			sb.append("]");
 
 			return sb.toString();
@@ -1522,6 +1504,6 @@ public class sample_project implements TalendJob {
 	ResumeUtil resumeUtil = null;
 }
 /************************************************************************************************
- * 49546 characters generated by Talend Cloud Data Management Platform on the
- * May 15, 2022 at 5:05:56 PM IST
+ * 48448 characters generated by Talend Cloud Data Management Platform on the
+ * May 15, 2022 at 5:07:13 PM IST
  ************************************************************************************************/

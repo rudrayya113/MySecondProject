@@ -19,7 +19,7 @@
     <talend.job.folder></talend.job.folder>
     <talend.job.context>Default</talend.job.context>
     <talend.job.path>talend_cloud</talend.job.path>
-    <talend.job.git.commit.id>f3033165bf6560aafa01ab38226645adc3394ec6</talend.job.git.commit.id>
+    <talend.job.git.commit.id>ded283aa44c9d755ff1c1293866c0c7ec3f6a4d9</talend.job.git.commit.id>
     <project.distribution-management.repository.id>${project.distributionManagement.repository.id}</project.distribution-management.repository.id>
     <talend.job.stat>true</talend.job.stat>
     <talend.job.git.author>rudrayyamath00@trial38797.us.talend.com</talend.job.git.author>
@@ -38,7 +38,7 @@
     <talend.product.version>8.0.1.20220421_1430-patch</talend.product.version>
     <talend.project.name>TALEND_CLOUD</talend.project.name>
     <current.test.resources.dir>${basedir}/src/test/resources</current.test.resources.dir>
-    <talend.job.git.commit.date>1652614533000</talend.job.git.commit.date>
+    <talend.job.git.commit.date>1652614580000</talend.job.git.commit.date>
     <project.distribution-management.repository.url>${project.distributionManagement.repository.url}</project.distribution-management.repository.url>
     <current.bundle.resources.dir>${basedir}/src/main/bundle-resources</current.bundle.resources.dir>
     <talend.job.name>sample_project</talend.job.name>
